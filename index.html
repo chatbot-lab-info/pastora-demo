@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="img/monograma.png">
-<link rel="stylesheet" href="css/piel.css?v=1793651903">
+<link rel="stylesheet" href="css/piel.css?v=1793652540">
 <link rel="stylesheet" href="css/web.css?v=1793647228">
 <script>/* el QR de cada mesa apunta a esta misma dirección con ?mesa=CÓDIGO: se lo manda a la app de mesa */
 (function(){var m=location.search.match(/[?&](?:mesa|t)=([A-Za-z0-9]+)/);if(m)location.replace('mesa/?mesa='+m[1]+(/[?&]demo=1/.test(location.search)?'&demo=1':''))})();</script>
@@ -86,13 +86,13 @@
       <div class="campo"><span id="lHora">Horario</span><div class="horas" id="horas" role="group" aria-labelledby="lHora" aria-live="polite"></div><p class="error" id="eHora" hidden></p></div>
       <label class="campo"><span>Nombre</span><input id="nombre" autocomplete="name" maxlength="120" required><p class="error" hidden></p></label>
       <label class="campo"><span>Teléfono</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="342 5123456" maxlength="24" required><p class="error" hidden></p></label>
-      <div class="campo"><span>¿Algo que tengamos que saber? (opcional)</span>
+      <label class="campo"><span>¿Alguna alergia o restricción alimentaria? (opcional)</span><input id="alergia" type="text" maxlength="150" autocomplete="off" placeholder="Ej.: celíaca, alergia al maní"></label>
+      <div class="campo"><span>¿Algo más que tengamos que saber? (opcional)</span>
         <div class="chips-nota" role="group" aria-label="Avisos frecuentes">
-          <button type="button" data-nota="Alergia o restricción: ">Alergia o restricción</button>
           <button type="button" data-nota="Cumpleaños. ">Cumpleaños</button>
           <button type="button" data-nota="Aniversario. ">Aniversario</button>
         </div>
-        <textarea id="nota" maxlength="200" aria-label="Algo que tengamos que saber" placeholder="Una alergia (es muy importante que nos avises), un cumpleaños, un cochecito…"></textarea></div>
+        <textarea id="nota" maxlength="200" aria-label="Algo que tengamos que saber" placeholder="Un cumpleaños, un cochecito, una sorpresa…"></textarea></div>
       <p class="aviso mal" id="eForm" role="alert" hidden></p>
       <button class="btn btn-oro" type="submit" id="enviar">Reservar</button>
     </form>
@@ -119,7 +119,7 @@
 <script src="js/config.js?v=2611021743"></script>
 <script src="js/demo.js?v=2611021743"></script>
 <script src="js/panel.js?v=2611021743"></script>
-<script src="js/web.js?v=1793651903"></script>
+<script src="js/web.js?v=1793652540"></script>
 <script src="js/controles.js?v=2611021743"></script>
 <script src="js/motion.js?v=2611021743"></script>
 </body>

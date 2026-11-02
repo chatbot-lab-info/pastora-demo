@@ -65,7 +65,7 @@
     if (!$('#tel').value.trim()) { marcarMal($('#tel'), 'Dejanos un teléfono para confirmarte.'); mal = true; }
     if (mal) return;
     const b = $('#enviar'); b.disabled = true; b.textContent = 'Enviando…';
-    const d = await P.llamar('crearReserva', { reservaId: f.reservaId, nombre: $('#nombre').value.trim(), telefono: $('#tel').value.trim(), personas: f.personas, fecha: fecha.value, hora: f.hora, zona: f.zona || undefined, nota: $('#nota').value.trim() || undefined });
+    const d = await P.llamar('crearReserva', { reservaId: f.reservaId, nombre: $('#nombre').value.trim(), telefono: $('#tel').value.trim(), personas: f.personas, fecha: fecha.value, hora: f.hora, zona: f.zona || undefined, nota: $('#nota').value.trim() || undefined, alergia: ($('#alergia') && $('#alergia').value.trim()) || undefined });
     b.disabled = false; b.textContent = 'Reservar';
     if (!d || !d.ok) {
       if (d && d.campos) { if (d.campos.nombre) marcarMal($('#nombre'), d.campos.nombre); if (d.campos.telefono) marcarMal($('#tel'), d.campos.telefono); if (d.campos.hora || d.campos.fecha) { eF.textContent = d.campos.hora || d.campos.fecha; eF.hidden = false; } }

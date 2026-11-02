@@ -103,3 +103,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 @keyframes calsig{from{opacity:0;transform:translateX(14px)}}@keyframes calant{from{opacity:0;transform:translateX(-14px)}}
 @media(prefers-reduced-motion:reduce){.ctl-l,.ctl-cal,.cal-dias{transition:none;animation:none}}
 body.ctl-abierto .fija.ver{transform:translateY(160%)}
+
+/* Sin zoom al tocar un campo (iOS hace zoom si el texto del campo es menor a 16px) */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+input,select,textarea,.campo input,.campo select,.campo textarea,.lin .nota input{font-size:16px !important}

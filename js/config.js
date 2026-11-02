@@ -3,7 +3,7 @@ window.NEGOCIO = {
   nombre: 'Pastora',
   lema: 'Pan, vino, café y encuentros',
   /* URL /exec del panel del cliente (Lanzador → tarjeta «Conexión con la web»). Vacía = modo demostración con una carta de ejemplo. */
-  PANEL_URL: '',
+  PANEL_URL: 'https://script.google.com/macros/s/AKfycbyHawILBOTPRQox5KaQxA4qZxpGljciQE71MeGpQ2isqrnKDK4nryajUNxYpezYj5rO/exec',
   whatsapp: '',            // ej. '5493425969853' (si queda vacío se usa el del panel)
   instagram: '',           // ej. 'pastora.sf'
   direccion: 'Santa Fe, Argentina',

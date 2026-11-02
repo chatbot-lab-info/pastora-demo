@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pastora · Pan, vino, café y encuentros</title>
+<meta name="description" content="Pastora: pan, vino, café y encuentros. Reservá tu mesa y mirá la carta.">
+<meta name="theme-color" content="#0C1F38">
+<link rel="icon" href="img/monograma.png">
+<link rel="stylesheet" href="css/piel.css">
+<link rel="stylesheet" href="css/web.css">
+<script>/* el QR de cada mesa apunta a esta misma dirección con ?mesa=CÓDIGO: se lo manda a la app de mesa */
+(function(){var m=location.search.match(/[?&](?:mesa|t)=([A-Za-z0-9]+)/);if(m)location.replace('mesa/?mesa='+m[1]+(/[?&]demo=1/.test(location.search)?'&demo=1':''))})();</script>
+<script>/* movimiento: se activa solo si la persona no pidió "reducir animaciones"; si algo falla, el sitio se ve igual (versión estática) */
+(function(){var r=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!r&&!/[?&]quieto=1/.test(location.search)){document.documentElement.classList.add('js-motion');setTimeout(function(){if(!window.Mov||!window.Mov.listo)document.documentElement.classList.remove('js-motion')},5000)}})();</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ramita" viewBox="0 0 120 26"><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M8 13h104"/><path d="M60 13c-6-9-14-10-20-6 6 6 14 8 20 6zM60 13c6-9 14-10 20-6-6 6-14 8-20 6zM60 13c-6 9-14 10-20 6 6-6 14-8 20-6zM60 13c6 9 14 10 20 6-6-6-14-8-20-6z"/></g></symbol></svg>
+
+<header class="barra" id="barra">
+  <a href="#inicio" aria-label="Pastora, ir al inicio"><img src="img/monograma.png" alt="" width="40" height="40"></a>
+  <nav aria-label="Principal"><a class="btn btn-chico" href="#carta">Carta</a><a class="btn btn-chico btn-oro" href="#reservar">Reservar</a></nav>
+</header>
+
+<main id="inicio">
+  <section class="escena" id="escena" aria-label="Pastora">
+    <div class="escena-pin">
+      <div class="capa capa-fachada"><img src="img/fachada.jpg" alt="" width="1920" height="1434" fetchpriority="high"></div>
+      <div class="capa capa-salon"><img src="img/salon.jpg" alt="El salón de Pastora: mesas de madera, pared azul con dibujos en líneas doradas y el mostrador con panes" width="1920" height="1434"></div>
+      <div class="velo"></div>
+      <svg class="arco" viewBox="0 0 100 140" aria-hidden="true"><path pathLength="1" d="M.6 140V50A49.4 49.4 0 0 1 99.4 50V140"/></svg>
+      <div class="hero-in">
+        <img class="hero-logo" src="img/logo-pastora.png" alt="Pastora — pan, vino, café y encuentros" width="880" height="360">
+        <p class="hero-lema">Te esperamos con la mesa lista.</p>
+        <div class="hero-cta">
+          <a class="btn btn-oro" href="#reservar">Reservar mesa</a>
+          <a class="btn" href="#carta">Ver la carta</a>
+        </div>
+      </div>
+      <div class="intro-in" id="bienvenida">
+        <svg class="iconos" viewBox="0 0 232 48" aria-hidden="true">
+          <g pathLength="1">
+            <path pathLength="1" d="M10 20h24v8a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10zM34 22h3a4 4 0 0 1 0 8h-3M16 8c0 3 3 3 3 6M24 8c0 3 3 3 3 6"/>
+            <path pathLength="1" d="M78 4h6v10c0 3 6 5 6 10v20H72V24c0-5 6-7 6-10zM72 30h18"/>
+            <path pathLength="1" d="M124 30c0-9 8-16 18-16s18 7 18 16c0 3-2 5-5 5h-26c-3 0-5-2-5-5zM135 20l3 6M143 18l3 7M151 21l2 6"/>
+            <path pathLength="1" d="M190 42c10-10 20-20 32-32M202 32c-6 0-9-3-9-7 5 0 8 2 9 7zM210 24c-6 0-9-3-9-7 5 0 8 2 9 7zM218 16c-5 0-8-3-8-6 5 0 7 2 8 6z"/>
+          </g>
+        </svg>
+        <p id="textoInicio"></p>
+        <span class="cap">Pan · Vino · Café · Encuentros</span>
+      </div>
+      <a class="hero-abajo" href="#carta" aria-label="Seguir bajando">Descubrí<i></i></a>
+    </div>
+    <figure class="salon-estatico"><img src="img/salon.jpg" alt="" loading="lazy" width="1920" height="1434"></figure>
+  </section>
+
+  <section class="seccion" id="carta" aria-labelledby="tCarta">
+    <div class="encab reveal"><span class="cap">Para elegir con calma</span><h2 class="titulo" id="tCarta">La carta</h2><svg class="ramita" aria-hidden="true"><use href="#ramita"/></svg></div>
+    <div class="carta-tabs" id="cartaTabs" role="tablist" aria-label="Categorías"></div>
+    <div id="cartaLista" aria-live="polite"><div class="esq" style="height:70px;margin-bottom:14px"></div><div class="esq" style="height:70px;margin-bottom:14px"></div><div class="esq" style="height:70px"></div></div>
+    <p class="carta-nota" id="cartaNota"></p>
+  </section>
+
+  <section class="seccion" id="reservar" aria-labelledby="tRes">
+    <div class="encab reveal"><span class="cap">Guardamos tu lugar</span><h2 class="titulo" id="tRes">Reservá tu mesa</h2><p>Elegí cuántos son, el día y el horario. Te confirmamos enseguida.</p></div>
+    <form class="tarjeta reserva reveal" id="formRes" novalidate>
+      <div class="fila2">
+        <div class="campo"><span id="lPers">Personas</span><div class="paso" role="group" aria-labelledby="lPers"><button type="button" id="menos" aria-label="Menos personas">−</button><b id="pers" aria-live="polite">2</b><button type="button" id="mas" aria-label="Más personas">+</button></div></div>
+        <div class="campo" id="campoFecha"><span id="lFecha">Día</span><input type="date" id="fecha" required></div>
+      </div>
+      <div class="campo" id="campoZona" hidden><span id="lZona">Dónde</span><select id="zona" aria-labelledby="lZona"></select></div>
+      <div class="campo"><span id="lHora">Horario</span><div class="horas" id="horas" role="group" aria-labelledby="lHora" aria-live="polite"></div><p class="error" id="eHora" hidden></p></div>
+      <label class="campo"><span>Nombre</span><input id="nombre" autocomplete="name" maxlength="120" required><p class="error" hidden></p></label>
+      <label class="campo"><span>Teléfono</span><input id="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="342 5123456" maxlength="24" required><p class="error" hidden></p></label>
+      <label class="campo"><span>¿Algo que tengamos que saber? (opcional)</span><textarea id="nota" maxlength="200" placeholder="Un cumpleaños, una alergia, un cochecito…"></textarea></label>
+      <p class="aviso mal" id="eForm" role="alert" hidden></p>
+      <button class="btn btn-oro" type="submit" id="enviar">Reservar</button>
+    </form>
+    <div class="tarjeta reserva" id="okRes" hidden></div>
+  </section>
+
+  <section class="seccion encontranos reveal" aria-labelledby="tEnc">
+    <img class="ilu" src="img/ilustracion.png" alt="" loading="lazy" width="280" height="380">
+    <h2 class="titulo" id="tEnc">Encontranos</h2>
+    <div class="datos" id="datos"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center" id="contactos"></div>
+  </section>
+</main>
+
+<footer class="pie"><span id="pieDemo"></span>Web y sistema de reservas by <a href="https://wa.me/5493425969853" rel="noopener">iNGENIA</a></footer>
+
+<div class="fija" id="fija" role="navigation" aria-label="Accesos rápidos"><a class="btn" href="#carta">Ver la carta</a><a class="btn btn-oro" href="#reservar">Reservar</a></div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/panel.js"></script>
+<script src="js/web.js"></script>
+<script src="js/controles.js"></script>
+<script src="js/motion.js"></script>
+</body>
+</html>

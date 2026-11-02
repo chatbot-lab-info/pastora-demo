@@ -37,3 +37,6 @@ GitHub Pages (cuenta de chatbot): repo público → Settings → Pages → rama 
 
 ## Qué es de ejemplo en esta demo
 Carta y precios (inventados), «Te esperamos con la mesa lista.», el párrafo de la portada, «Santa Fe, Argentina». Las imágenes y el logo son los que mandó el local.
+
+## Vista previa al compartir el link (WhatsApp / Instagram)
+`index.html` tiene las etiquetas `og:*` y la imagen `img/og.jpg` (1200×630). Las direcciones son **absolutas**: si el sitio se publica en otra dirección (otro cliente, Netlify), cambiar `og:url`, `og:image` y `canonical` en `index.html`. WhatsApp guarda la vista previa de cada link: si se cambia la imagen, probar con el link + `?v=2` para que la vuelva a leer.

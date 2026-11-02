@@ -29,6 +29,7 @@
 html:not(.js-motion) .capa-fachada{bottom:auto;height:calc(100svh + 280px)}
 html:not(.js-motion) .velo{bottom:auto;height:calc(100svh + 280px)}
 html:not(.js-motion) .hero-in,html:not(.js-motion) .intro-in{z-index:1}
+html:not(.js-motion) .hero-in{overflow:hidden}
 /* ---- Con movimiento: la escena queda fija y se recorre al scrollear (GSAP + ScrollTrigger), todo el suavizado va por Lenis ---- */
 .js-motion .escena-pin{height:100svh;overflow:hidden}
 .js-motion .capa-salon{display:block;visibility:hidden;clip-path:inset(0 round 0)}
@@ -61,9 +62,10 @@ html:not(.js-motion) .hero-in,html:not(.js-motion) .intro-in{z-index:1}
 .plato .precio{font:500 18px/1.2 var(--sans);color:var(--oro);white-space:nowrap;align-self:start;padding-top:4px}
 .plato p{grid-column:1;margin:0;color:var(--suave);font-size:15px}
 .carta-nota{text-align:center;color:var(--tenue);font-size:14px;margin-top:10px}
-.reserva{display:grid;gap:22px;padding:clamp(24px,5vw,40px);max-width:560px;margin:0 auto}
-.fila2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:420px){.fila2{grid-template-columns:1fr}}
+.reserva{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;padding:clamp(24px,5vw,40px);max-width:560px;margin:0 auto}
+.fila2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.reserva>*,.fila2>*,.campo{min-width:0}
+@media(max-width:520px){.fila2{grid-template-columns:minmax(0,1fr)}}
 .horas{display:flex;flex-wrap:wrap;gap:10px}
 .horas-vacio{margin:0;color:var(--suave);font-size:15px}
 .ok-reserva{display:grid;gap:18px;justify-items:center;text-align:center;padding:12px 0}

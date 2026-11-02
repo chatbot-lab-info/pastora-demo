@@ -14,10 +14,28 @@
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
+  /* cortina: en saltos largos (cruzar la portada fijada) no se recorre la animación a toda velocidad: se funde, se salta y se vuelve a mostrar */
+  const cortina = document.createElement('div');
+  cortina.className = 'cortina'; cortina.setAttribute('aria-hidden', 'true');
+  cortina.style.background = getComputedStyle(document.body).backgroundColor || '#0b1f3a';
+  document.body.appendChild(cortina);
+  let saltando = false;
   const irA = (dest, opt) => {
     const el = typeof dest === 'string' ? $(dest) : dest;
     if (!el) return;
-    lenis.scrollTo(el === $('#inicio') ? 0 : el, Object.assign({ offset: -54, duration: 1.7, easing: (x) => 1 - Math.pow(1 - x, 4) }, opt || {}));
+    const o = Object.assign({ offset: -54, duration: 1.7, easing: (x) => 1 - Math.pow(1 - x, 4) }, opt || {});
+    const y = el === $('#inicio') ? 0 : el.getBoundingClientRect().top + window.scrollY + o.offset;
+    if (Math.abs(y - window.scrollY) > innerHeight * 1.6) {
+      if (saltando) return; saltando = true;
+      cortina.style.opacity = '1';
+      setTimeout(() => {
+        lenis.scrollTo(Math.max(0, y), { immediate: true, force: true });
+        ScrollTrigger.update();
+        requestAnimationFrame(() => requestAnimationFrame(() => { cortina.style.opacity = '0'; saltando = false; }));
+      }, 240);
+      return;
+    }
+    lenis.scrollTo(el === $('#inicio') ? 0 : el, o);
   };
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]'); if (!a) return;

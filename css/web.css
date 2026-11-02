@@ -102,3 +102,5 @@ html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 .lenis.lenis-stopped{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.cursor{display:none}}
+
+.cortina{position:fixed;inset:0;z-index:95;opacity:0;pointer-events:none;transition:opacity .24s ease}

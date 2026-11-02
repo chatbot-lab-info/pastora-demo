@@ -7,7 +7,7 @@
 
   /* barra y accesos fijos */
   const barra = $('#barra'), fija = $('#fija');
-  const alScroll = () => { const y = window.scrollY, h = window.innerHeight; barra.classList.toggle('fondo', y > 40); fija.classList.toggle('ver', y > h * (document.documentElement.classList.contains('js-motion') ? 0.3 : 0.55)); };
+  const alScroll = () => { const y = window.scrollY, h = window.innerHeight; barra.classList.toggle('fondo', y > 40); const rs = $('#reservar'), rr = rs ? rs.getBoundingClientRect() : null, enRes = !!rr && rr.top < h * 0.35 && rr.bottom > h * 0.4; fija.classList.toggle('ver', y > h * (document.documentElement.classList.contains('js-motion') ? 0.3 : 0.55) && !enRes); };
   addEventListener('scroll', alScroll, { passive: true }); alScroll();
   const io = 'IntersectionObserver' in window ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('ver'); io.unobserve(e.target); } }), { threshold: 0.12 }) : null;
   document.documentElement.classList.contains('js-motion') || document.querySelectorAll('.reveal').forEach((el) => (io ? io.observe(el) : el.classList.add('ver')));
@@ -76,7 +76,7 @@
     const ok = $('#okRes'), dia = new Date(d.fecha + 'T12:00:00').toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
     const wa = d.whatsappUrl || P.whatsappLink(WSP, 'Hola! Soy ' + $('#nombre').value.trim() + '. Reservé para ' + d.personas + ' el ' + dia + ' a las ' + d.hora + '.');
     ok.innerHTML = '<div class="ok-reserva"><span class="tilde" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h3>¡Listo, ' + esc($('#nombre').value.trim().split(' ')[0]) + '!</h3><p style="margin:0;color:var(--suave);max-width:34ch">' + (d.estado === 'confirmada' ? 'Tu reserva está confirmada.' : 'Recibimos tu reserva. Te la confirmamos por teléfono o WhatsApp.') + '</p><dl><dt>Día</dt><dd>' + esc(dia) + '</dd><dt>Hora</dt><dd>' + esc(d.hora) + '</dd><dt>Personas</dt><dd>' + esc(d.personas) + '</dd>' + (d.zona ? '<dt>Lugar</dt><dd>' + esc(d.zona) + '</dd>' : '') + '<dt>Reserva</dt><dd>#' + esc(d.numero) + '</dd></dl>' + (wa ? '<a class="btn btn-oro" href="' + esc(wa) + '" rel="noopener">Avisar por WhatsApp</a>' : '') + '<button class="btn btn-chico" type="button" id="otra">Hacer otra reserva</button></div>';
-    $('#formRes').hidden = true; ok.hidden = false; if (window.Mov) { window.Mov.exito(ok); window.Mov.irA(ok, { offset: -Math.max(80, (innerHeight - ok.offsetHeight) / 2) }); } else ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    $('#formRes').hidden = true; ok.hidden = false; if (window.Mov) { window.Mov.exito(ok); setTimeout(() => { window.Mov.refrescar(); window.Mov.irA('#tRes', { offset: -120, duration: 1.1 }); }, 80); } else ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
     $('#otra').onclick = () => { f.reservaId = P.idAleatorio('res'); ok.hidden = true; $('#formRes').hidden = false; horarios(); };
   });
 

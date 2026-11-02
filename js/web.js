@@ -86,4 +86,9 @@
     $('#contactos').innerHTML = (wsp ? '<a class="btn btn-chico" href="' + esc(P.whatsappLink(wsp, 'Hola Pastora!')) + '" rel="noopener">WhatsApp</a>' : '') + (ig ? '<a class="btn btn-chico" href="https://instagram.com/' + esc(ig) + '" rel="noopener">Instagram</a>' : '');
   }
   pintarContacto();
+  /* atajos de la nota: agregan el texto al campo sin pisar lo que ya escribió */
+  document.querySelectorAll('.chips-nota button').forEach((b) => b.addEventListener('click', () => {
+    const t = $('#nota'), x = b.dataset.nota; if (!t || t.value.indexOf(x.trim()) >= 0) { if (t) t.focus(); return; }
+    t.value = (t.value ? t.value.replace(/\s*$/, ' ') : '') + x; t.value = t.value.slice(0, 200); t.focus(); t.setSelectionRange(t.value.length, t.value.length);
+  }));
 })();

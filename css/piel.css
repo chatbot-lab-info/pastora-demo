@@ -107,3 +107,9 @@ body.ctl-abierto .fija.ver{transform:translateY(160%)}
 /* Sin zoom al tocar un campo (iOS hace zoom si el texto del campo es menor a 16px) */
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 input,select,textarea,.campo input,.campo select,.campo textarea,.lin .nota input{font-size:16px !important}
+
+/* atajos para la nota de la reserva */
+.chips-nota{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.chips-nota button{min-height:40px;padding:0 14px;border-radius:99px;border:1px solid var(--linea);background:rgba(234,223,196,.05);color:var(--crema);font:inherit;font-size:14px;cursor:pointer;transition:border-color .2s,background .2s}
+.chips-nota button:hover,.chips-nota button:focus-visible{border-color:var(--oro);outline:0}
+.chips-nota button:active{transform:scale(.96)}
